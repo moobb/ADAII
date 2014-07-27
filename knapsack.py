@@ -50,5 +50,5 @@ def knapsack(items, capacity):
 
 items = buildItems()
 a=knapsack(items, 6)
-a = 1
+
 
