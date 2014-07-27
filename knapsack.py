@@ -23,12 +23,15 @@ class Item(object):
 
 
 def buildItems():
-    names = ['clock', 'painting', 'radio', 'vase', 'book', 'computer']
-    values = [3,2,4,4]
-    weights = [4,3,2,3]
+    names = ['a', 'b', 'c', 'd']
+    values = [3, 2, 4, 4]
+    weights = [4, 3, 2, 3]
     Items = []
-    for i in range(len(values)):
+    for i in range(0, len(values)):
         Items.append(Item(names[i], values[i], weights[i]))
+
+    # dummy item
+    Items.insert(0, ('', 0, 0))
     return Items
 
 
@@ -38,7 +41,7 @@ def knapsack(items, capacity):
     numberItems = len(items)
     A = np.zeros((numberItems+1, capacity+1))
 
-    for i in range(1, numberItems+1):
+    for i in range(1, numberItems):
         for x in range(capacity+1):
             if x - items[i].getWeight() >= 0:
                 secondTerm = A[i - 1, x - items[i].getWeight()] + items[i].getValue()
@@ -48,7 +51,7 @@ def knapsack(items, capacity):
 
     return A[i, x]
 
-items = buildItems()
-a=knapsack(items, 6)
+#items = buildItems()
+#a = knapsack(items, 6)
 
 
